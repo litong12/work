@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>模板文件</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/swiper.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body ng-app="myApp">
+<div class="wrap" ng-controller="notepad">
+    <header class="header">
+    <nav class="col-xs-3"><i class="glyphicon glyphicon-menu-left"></i></nav>
+    <nav class="col-xs-6">订单支付</nav>
+        <nav class="col-xs-3"><i class="glyphicon glyphicon-menu-right"></i></nav>
+    </header>
+    <div class="main">
+        <p>路飞 <span>138****8888</span></p>
+        <dl>
+            <dt><i>fdh</i></dt>
+           <p class="glyphicon glyphicon-menu-right"></p>
+            <dd>北京市海淀区知春路北京市海淀区知春路北京市海淀区 知春路</dd>
+        </dl>
+    </div>
+    <div class="jin">
+        <img src="./images/jin_02.png" alt="">
+    </div>
+<section class="section">
+    <h2><img src="./images/icon_03.png" alt="">恒之然旗舰店</h2>
+    <div class="main1">
+        <dl>
+            <dt>
+                <img src="./images/main2_03.png" alt="">
+
+            </dt>
+            <dd>
+                <h5>维维嚼益嚼水果大豆棒橙味维维嚼 益嚼水果大豆棒东方和规范化规范对方好感东方花园橙味</h5>
+                <div class="money">
+                    <div class="left">
+                        <p>￥988.00</p>
+                        <p>¥1000.00</p>
+                    </div>
+                    <div class="right">
+                        <span  class="del" ng-click="del()">-</span>
+                        <span id="t1" ng-bind="count"></span>
+                        <span class="add"  ng-click="add()">+</span>
+                    </div>
+                </div>
+            </dd>
+        </dl>
+        <div>
+            <p><span>{{price}}</span>商品总金额:</p>
+            <P><span>¥10.00</span>运费:</P>
+            <P><span>{{count2}}</span>总额(含运费):</P>
+        </div>
+
+    </div>
+    <div class="main3">
+        <p>余额支付 ¥100.00</p>
+        <label class="toggle">
+            <input type="checkbox" ng-model="xx">
+            <div class="mar green" ng-click="dian1()">
+                <div class="icon"></div>
+            </div>
+        </label>
+    </div>
+    <div class="main3">
+        <p>奖金支付 ¥100.00</p>
+        <label class="toggle">
+            <input type="checkbox" ng-checked="!xx">
+            <div class="mar green" ng-click="dian1()">
+                <div class="icon"></div>
+            </div>
+        </label>
+    </div>
+    <div class="main3">
+        <p>奖金支付 ¥100.00 <span><i class="glyphicon glyphicon-menu-right"></i></span></p>
+
+    </div>
+
+</section>
+
+<div class="amount">
+    <p ng-if="myVar">金额不足，请选择其他支付方式！</p>
+</div>
+<footer class="footer">
+<div class="left-1">
+    <P>总计: {{count3}}</P>
+    <p>(含运费)</p>
+</div>
+    <div class="right-1">
+        <P ng-click="click1()"><input type="checkbox" ng-model="myVar" ng-init="myVar = false" class="t2">提交订单</P>
+    </div>
+</footer>
+</div>
+<script src="./node_modules/angular/angular.js"></script>
+    <script type="text/javascript">
+        var app=angular.module("myApp",[])
+        app.controller("notepad",function($scope) {
+            $scope.count=1;
+            $scope.price=988;
+            $scope.count2=988;
+            $scope.count3=998;
+            $scope.flag=false;
+            //console.log( $scope.price=10)
+            $scope.del=function(){
+                $scope.count--;
+                $scope.price =$scope.count *  988
+                $scope.count2= $scope.price+10
+                $scope.count3= $scope.price+10-100
+            }
+
+            $scope.add=function(){
+                $scope.count++
+                $scope.price = $scope.count *  988
+                $scope.count2= $scope.price+10
+
+
+        }
+            $scope.dian1=function(){
+                if($scope.flag){
+                    $scope.count3= $scope.price+10;
+                    $scope.flag=!$scope.flag
+                }else{
+                    $scope.count3= $scope.price+10-100;
+                    $scope.flag=!$scope.flag
+                }
+            }
+
+
+
+
+        })
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="notepad">
+        <textarea name="" id="" cols="30" rows="10" ng-model="text" ng-keydown="type()">
+        </textarea>
+        <p>最多可以输入100个字  ，还可以输入{{con}}字</p>
+    </div>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script>
+        var app=angular.module("myapp",[])
+        app.controller("notepad",function($scope){
+            //var note=$scope.text
+            $scope.text=""
+            $scope.type=function(){
+                //console.log($scope.text)
+                $scope.con= 10-$scope.text.length;
+                if($scope.con<=1){
+                    console.log( $scope.text=$scope.text.substring(0,9))
+
+                }
+            }
+        })
+    </script>
+</body>
+</html>
